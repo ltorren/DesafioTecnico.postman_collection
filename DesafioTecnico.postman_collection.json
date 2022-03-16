@@ -1,0 +1,482 @@
+{
+	"info": {
+		"_postman_id": "5c3559c3-fdc9-440a-9cc2-3de73c262576",
+		"name": "DesafioTecnico",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "QAA-02",
+			"item": [
+				{
+					"name": "TestCaseCrearPosts",
+					"item": [
+						{
+							"name": "TestStepObtenerPosts",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://jsonplaceholder.typicode.com/posts",
+									"protocol": "https",
+									"host": [
+										"jsonplaceholder",
+										"typicode",
+										"com"
+									],
+									"path": [
+										"posts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "TestStepCrearPosts",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"el codigo de estado es 201\",function(){\r",
+											"    pm.response.to.have.status(201);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"el texto del código de estado es OK\",function(){\r",
+											"    pm.response.to.have.status(\"Created\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"userId\": 1,\r\n    \"title\": \"sunt aut facere repellat provident occaecati excepturi optio reprehenderit\",\r\n    \"body\": \"quia et suscipit\\nsuscipit recusandae consequuntur expedita et cum\\nreprehenderit molestiae ut ut quas totam\\nnostrum rerum est autem sunt rem eveniet architecto\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://jsonplaceholder.typicode.com/posts",
+									"protocol": "https",
+									"host": [
+										"jsonplaceholder",
+										"typicode",
+										"com"
+									],
+									"path": [
+										"posts"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "TestCaseEliminarUsuario",
+					"item": [
+						{
+							"name": "TestStepCrearUsuario",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Luis Torre\",\r\n    \"username\": \"luistn\",\r\n    \"email\": \"luis@yesenia.net\",\r\n    \"address\": {\r\n        \"street\": \"Douglas Extension\",\r\n        \"suite\": \"Suite 847\",\r\n        \"city\": \"McKenziehaven\",\r\n        \"zipcode\": \"59590-4157\",\r\n        \"geo\": {\r\n            \"lat\": \"-68.6102\",\r\n            \"lng\": \"-47.0653\"\r\n        }\r\n    },\r\n    \"phone\": \"1-463-123-4447\",\r\n    \"website\": \"ramiro.info\",\r\n    \"company\": {\r\n        \"name\": \"Romaguera-Jacobson\",\r\n        \"catchPhrase\": \"Face to face bifurcated interface\",\r\n        \"bs\": \"e-enable strategic applications\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://jsonplaceholder.typicode.com/users",
+									"protocol": "https",
+									"host": [
+										"jsonplaceholder",
+										"typicode",
+										"com"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "TestStepEliminarUsuario",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"el codigo de estado es 200\",function(){\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"el texto del código de estado es OK\",function(){\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"el response body es un JSON\",function(){\r",
+											"    pm.response.to.be.json;\r",
+											"});\r",
+											"\r",
+											"pm.test(\"el tiempo de respuesta es menor a 5 segundos\",function(){\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(5000);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"el header Content-Type debe ser JSON\",function(){\r",
+											"    pm.response.to.be.header(\"Content-Type\", \"application/json; charset=utf-8\")\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://jsonplaceholder.typicode.com/users/{{userId}}",
+									"protocol": "https",
+									"host": [
+										"jsonplaceholder",
+										"typicode",
+										"com"
+									],
+									"path": [
+										"users",
+										"{{userId}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "TestCaseComments",
+					"item": [
+						{
+							"name": "TestStepCrearComments",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"el email debe contener el @\",function(){\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n        \"postId\": 1,\r\n        \"name\": \"id labore ex et quam laborum\",\r\n        \"email\": \"Eliseo@gardner.biz\",\r\n        \"body\": \"laudantium enim quasi est quidem magnam voluptate ipsam eos\\ntempora quo necessitatibus\\ndolor quam autem quasi\\nreiciendis et nam sapiente accusantium\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://jsonplaceholder.typicode.com/comments",
+									"protocol": "https",
+									"host": [
+										"jsonplaceholder",
+										"typicode",
+										"com"
+									],
+									"path": [
+										"comments"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "QAA-01",
+			"item": [
+				{
+					"name": "TestCaseStatus200",
+					"item": [
+						{
+							"name": "TestCase",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"el texto del código de estado es OK\",function(){\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"pm.test(\"el codigo de estado es 200\",function(){\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Country",
+										"value": "Argentina",
+										"type": "text"
+									},
+									{
+										"key": "City",
+										"value": "BuenosAires,SanJuan",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Date\": \"16032022\",\r\n    \"name\": \"Aldo Costa\",\r\n    \"username\": \"Aldo\",\r\n    \"Country\":\"Argentina\",\r\n    \"City\":[\"BuenosAires\",\"SanJuan\"]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "",
+									"query": [
+										{
+											"key": "Country",
+											"value": "Argentina",
+											"disabled": true
+										},
+										{
+											"key": "City",
+											"value": "BuenosAires, SanJuan",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "TestCaseStatus400",
+					"item": [
+						{
+							"name": "TestCase",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"el codigo de estado es 400\",function(){\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"pm.test(\"el texto del código de estado es client error\",function(){\r",
+											"    pm.response.to.have.status(\"client error\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Country",
+										"value": "Chile",
+										"type": "text"
+									},
+									{
+										"key": "City",
+										"value": "Santiago,Arica,Chiloe",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Date\": \"16032022\",\r\n    \"name\": \"Roger Anda\",\r\n    \"username\": \"Roger\",\r\n    \"Country\":\"Chile\",\r\n    \"City\":[\"Santiago\",\"Arica\",\"Chiloe\"]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "",
+									"query": [
+										{
+											"key": "Country",
+											"value": "Chile",
+											"disabled": true
+										},
+										{
+											"key": "City",
+											"value": "Santiago,Arica,Chiloe",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "TestCaseStatus500",
+					"item": [
+						{
+							"name": "TestCase",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"el codigo de estado es 500\",function(){\r",
+											"    pm.response.to.have.status(500);\r",
+											"});\r",
+											"pm.test(\"el texto del código de estado es server error\",function(){\r",
+											"    pm.response.to.have.status(\"server error\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Country",
+										"value": "Chile",
+										"type": "text"
+									},
+									{
+										"key": "City",
+										"value": "Santiago,Arica,Chiloe",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Date\": \"16032022\",\r\n    \"name\": \"Lalo Martinez\",\r\n    \"username\": \"Lalo\",\r\n    \"Country\":\"Chile\",\r\n    \"City\":[\"Santiago\",\"Arica\",\"Chiloe\"]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "",
+									"query": [
+										{
+											"key": "Country",
+											"value": "Chile",
+											"disabled": true
+										},
+										{
+											"key": "City",
+											"value": "Santiago,Arica,Chiloe",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "userId",
+			"value": "0",
+			"type": "string"
+		}
+	]
+}
